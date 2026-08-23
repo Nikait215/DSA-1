@@ -1,3 +1,15 @@
+/*
+    UCS301 - Data Structures
+    Lab Assignment 1 - Week 1
+
+    Q4. Array and Matrix Operations
+
+    Operations:
+    1. Reverse the elements of an array
+    2. Matrix multiplication
+    3. Matrix transpose
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -21,8 +33,14 @@ int main()
         int arr[100];
         int n;
 
-        cout << "\nEnter number of elements: ";
+        cout << "\nEnter number of elements (1 to 100): ";
         cin >> n;
+
+        if (n < 1 || n > 100)
+        {
+            cout << "Invalid size. Please enter a value between 1 and 100.\n";
+            return 0;
+        }
 
         cout << "Enter " << n << " elements:\n";
 
@@ -34,6 +52,7 @@ int main()
         int start = 0;
         int end = n - 1;
 
+        // Reverse the array using two pointers
         while (start < end)
         {
             swap(arr[start], arr[end]);
@@ -67,12 +86,22 @@ int main()
         cout << "Enter rows and columns of second matrix: ";
         cin >> r2 >> c2;
 
+        // Validate matrix dimensions
+        if (r1 < 1 || r1 > 10 || c1 < 1 || c1 > 10 ||
+            r2 < 1 || r2 > 10 || c2 < 1 || c2 > 10)
+        {
+            cout << "\nInvalid matrix dimensions.\n";
+            cout << "Rows and columns must be between 1 and 10.\n";
+            return 0;
+        }
+
+        // Matrix multiplication is possible only when
+        // columns of first matrix = rows of second matrix
         if (c1 != r2)
         {
             cout << "\nMatrix multiplication is not possible.\n";
-            cout << "Number of columns of first matrix must equal\n";
+            cout << "Number of columns of first matrix must equal ";
             cout << "number of rows of second matrix.\n";
-
             return 0;
         }
 
@@ -96,7 +125,7 @@ int main()
             }
         }
 
-        // Initialize result matrix
+        // Initialize result matrix with zero
         for (int i = 0; i < r1; i++)
         {
             for (int j = 0; j < c2; j++)
@@ -105,7 +134,7 @@ int main()
             }
         }
 
-        // Matrix multiplication
+        // Perform matrix multiplication
         for (int i = 0; i < r1; i++)
         {
             for (int j = 0; j < c2; j++)
@@ -145,6 +174,13 @@ int main()
         cout << "Enter number of columns: ";
         cin >> columns;
 
+        if (rows < 1 || rows > 10 || columns < 1 || columns > 10)
+        {
+            cout << "\nInvalid matrix dimensions.\n";
+            cout << "Rows and columns must be between 1 and 10.\n";
+            return 0;
+        }
+
         cout << "Enter matrix elements:\n";
 
         for (int i = 0; i < rows; i++)
@@ -179,7 +215,7 @@ int main()
 
     else
     {
-        cout << "\nInvalid choice.\n";
+        cout << "\nInvalid choice. Please choose 1, 2, or 3.\n";
     }
 
     return 0;
