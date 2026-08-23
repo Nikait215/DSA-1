@@ -1,3 +1,16 @@
+/*
+    UCS301 - Data Structures
+    Lab Assignment 1 - Week 1
+
+    Q5. Row and Column Sum of a Matrix
+
+    This program:
+    1. Accepts a matrix from the user
+    2. Displays the matrix
+    3. Calculates the sum of each row
+    4. Calculates the sum of each column
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -6,13 +19,23 @@ int main()
     int matrix[10][10];
     int rows, columns;
 
-    cout << "Enter number of rows: ";
+    cout << "===== ROW AND COLUMN SUM =====\n";
+
+    cout << "\nEnter number of rows (1 to 10): ";
     cin >> rows;
 
-    cout << "Enter number of columns: ";
+    cout << "Enter number of columns (1 to 10): ";
     cin >> columns;
 
-    cout << "Enter matrix elements:\n";
+    // Validate matrix dimensions
+    if (rows < 1 || rows > 10 || columns < 1 || columns > 10)
+    {
+        cout << "\nInvalid matrix dimensions.\n";
+        cout << "Rows and columns must be between 1 and 10.\n";
+        return 0;
+    }
+
+    cout << "\nEnter matrix elements:\n";
 
     for (int i = 0; i < rows; i++)
     {
@@ -35,7 +58,7 @@ int main()
         cout << endl;
     }
 
-    // Row sums
+    // Calculate row sums
     cout << "\nRow Sums:\n";
 
     for (int i = 0; i < rows; i++)
@@ -50,7 +73,7 @@ int main()
         cout << "Row " << i + 1 << " Sum = " << sum << endl;
     }
 
-    // Column sums
+    // Calculate column sums
     cout << "\nColumn Sums:\n";
 
     for (int j = 0; j < columns; j++)
