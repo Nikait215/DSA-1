@@ -1,3 +1,18 @@
+/*
+    UCS301 - Data Structures
+    Lab Assignment 1 - Week 1
+
+    Q1. Menu-Driven Program to Demonstrate Array Operations
+
+    Operations:
+    1. Create
+    2. Display
+    3. Insert
+    4. Delete
+    5. Linear Search
+    6. Exit
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -23,8 +38,15 @@ int main()
         {
         case 1:
             // CREATE
-            cout << "Enter number of elements: ";
+            cout << "\nEnter number of elements (1 to 100): ";
             cin >> n;
+
+            if (n < 1 || n > 100)
+            {
+                cout << "Invalid size. Please enter a value between 1 and 100.\n";
+                n = 0;
+                break;
+            }
 
             cout << "Enter " << n << " elements:\n";
 
@@ -66,7 +88,7 @@ int main()
                 break;
             }
 
-            cout << "Enter value to insert: ";
+            cout << "\nEnter value to insert: ";
             cin >> value;
 
             cout << "Enter position (1 to " << n + 1 << "): ";
@@ -78,6 +100,7 @@ int main()
             }
             else
             {
+                // Shift elements one position to the right
                 for (int i = n; i >= position; i--)
                 {
                     arr[i] = arr[i - 1];
@@ -103,7 +126,7 @@ int main()
                 break;
             }
 
-            cout << "Enter position to delete (1 to " << n << "): ";
+            cout << "\nEnter position to delete (1 to " << n << "): ";
             cin >> position;
 
             if (position < 1 || position > n)
@@ -112,6 +135,7 @@ int main()
             }
             else
             {
+                // Shift elements one position to the left
                 for (int i = position - 1; i < n - 1; i++)
                 {
                     arr[i] = arr[i + 1];
@@ -131,7 +155,13 @@ int main()
             int value;
             bool found = false;
 
-            cout << "Enter element to search: ";
+            if (n == 0)
+            {
+                cout << "Array is empty. Nothing to search.\n";
+                break;
+            }
+
+            cout << "\nEnter element to search: ";
             cin >> value;
 
             for (int i = 0; i < n; i++)
@@ -153,11 +183,11 @@ int main()
         }
 
         case 6:
-            cout << "Exiting program...\n";
+            cout << "\nExiting program...\n";
             break;
 
         default:
-            cout << "Invalid choice. Please try again.\n";
+            cout << "\nInvalid choice. Please try again.\n";
         }
 
     } while (choice != 6);
